@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_commerce_app/Widgets/HomePage.dart';
 
 class Authentication extends StatefulWidget {
   const Authentication({Key? key}) : super(key: key);
@@ -67,8 +68,12 @@ class _AuthenticationState extends State<Authentication> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            // Form is valid, perform authentication
-                            // Implement your authentication logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HomePage(),
+                              ),
+                            );
                           }
                         },
                         style: ElevatedButton.styleFrom(

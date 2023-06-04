@@ -21,7 +21,7 @@ const options = {
 
 mongoose.connect(process.env.DB_CONNECTION, options )
 .then(()=> {
-    console.log("Connected to GRAFICO DB")
+    console.log("Connected to DB")
 })
 .catch((error) => {
     console.error('Erreur lors de la connexion à MongoDB :', error);

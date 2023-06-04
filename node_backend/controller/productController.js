@@ -5,7 +5,7 @@ const Marque = require('../model/Marque');
 
 exports.ajoutProduit = async (req, res) => {
     try {
-        const { numProduit, numSerie, marque, type, detail, etat, inStock } = req.body;
+        const { numProduit, numSerie, marque, type, detail, etat, price } = req.body;
 
         let typeObj = null;
         let marqueObj = null;
@@ -37,6 +37,7 @@ exports.ajoutProduit = async (req, res) => {
             numSerie: numSerie,
             detail: detail,
             etat: etat,
+            price: price,
             marque: marqueObj._id,
             type: typeObj._id
         })

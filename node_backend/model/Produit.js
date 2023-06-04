@@ -33,6 +33,11 @@ const produits = mongoose.Schema({
         required: true,
         default: true
     },
+    price: {
+        type: Number,
+        required: true,
+        min: 0,
+    },
     marque: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Marque',

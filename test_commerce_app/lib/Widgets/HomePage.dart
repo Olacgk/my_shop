@@ -14,6 +14,26 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Grafico'),
         backgroundColor: Colors.black26,
+        leading: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: null,
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () {
+              // Logique de déconnexion
+            },
+          ),
+          SizedBox(width: 15,),
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              // Afficher le profil de l'utilisateur
+            },
+          ),
+          SizedBox(width: 20,)
+        ],
       ),
       body: Row(
         children: [

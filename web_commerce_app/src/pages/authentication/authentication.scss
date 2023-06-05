@@ -1,0 +1,46 @@
+.authentication {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+    .authentication-container {
+      max-width: 400px;
+      max-height: 500px;
+      padding: 20px;
+      border: 1px solid black;
+      border-radius: 15px;
+  
+      .authentication-logo {
+        font-size: 50px;
+        font-weight: bold;
+        text-align: center;
+      }
+  
+      .authentication-form {
+        margin-top: 50px;
+  
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 20px;
+  
+          label {
+            margin-bottom: 10px;
+          }
+  
+          input {
+            padding: 10px;
+          }
+        }
+  
+        .btn-login {
+          background-color: #000;
+          color: #fff;
+          padding: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  

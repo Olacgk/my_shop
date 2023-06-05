@@ -1,0 +1,11 @@
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/icudtl.dat
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/flutter_windows.dll
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/AssetManifest.smcbin
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/assets/images/Nature-Quotes.png
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag

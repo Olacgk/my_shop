@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:test_commerce_app/Widgets/HomePage.dart';
+import 'package:http/http.dart' as http;
 
 class Authentication extends StatefulWidget {
   const Authentication({Key? key}) : super(key: key);
@@ -11,13 +14,31 @@ class Authentication extends StatefulWidget {
 class _AuthenticationState extends State<Authentication> {
   final _formKey = GlobalKey<FormState>();
 
+  Future<void> fetchData() async {
+    final response = await http.get(Uri.parse('http://127.0.0.1:5000/api/user/login'));
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      // Traitez les données récupérées
+
+    } else {
+      // Gérez les erreurs
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Container(
-          constraints: const BoxConstraints(maxWidth: 400),
+          constraints: const BoxConstraints(maxWidth: 400, maxHeight: 500),
           padding: const EdgeInsets.all(20.0),
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 1.0
+            ),
+            borderRadius: BorderRadius.circular(15),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

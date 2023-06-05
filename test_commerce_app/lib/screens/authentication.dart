@@ -8,18 +8,23 @@ class Authentication extends StatefulWidget {
   const Authentication({Key? key}) : super(key: key);
 
   @override
-  _AuthenticationState createState() => _AuthenticationState();
+  AuthenticationState createState() => AuthenticationState();
 }
 
-class _AuthenticationState extends State<Authentication> {
+class AuthenticationState extends State<Authentication> {
   final _formKey = GlobalKey<FormState>();
+  final  _usernameController = TextEditingController();
+  final  _passwordController = TextEditingController();
 
   Future<void> fetchData() async {
-    final response = await http.get(Uri.parse('http://127.0.0.1:5000/api/user/login'));
+    final response = await http.post(Uri.parse('http://127.0.0.1:5000/api/user/login'),
+    body:{
+      'username': _usernameController.text,
+      'password': _passwordController.text
+    },);
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       // Traitez les données récupérées
-
     } else {
       // Gérez les erreurs
     }
@@ -56,6 +61,7 @@ class _AuthenticationState extends State<Authentication> {
                     const Text("Username"),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: _usernameController,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.person, color: Colors.black),
                         hintText: 'Username...',
@@ -71,6 +77,7 @@ class _AuthenticationState extends State<Authentication> {
                     const Text("Password"),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.lock, color: Colors.black),

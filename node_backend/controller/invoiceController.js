@@ -6,6 +6,8 @@ const PiecesJointe = require('../model/PiecesJointe');
 const multer = require('multer');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
+const Type = require('../model/Type');
+const Marque = require('../model/Marque');
 
 // Configuration de multer pour gérer l'importation de fichiers
 const storage = multer.diskStorage({
@@ -35,16 +37,6 @@ exports.ajoutFacture = async (req, res) => {
             client = await newClient.save();
         }
 
-        // Contrôle du rôle de l'utilisateur
-        if (req.user.role == 'comptable') {
-            return res.status(401).json({ message: 'Vous n\'avez pas les droits pour effectuer cette action.'})
-        } else if (req.user.role == 'vendor' || req.user.role == 'admin') {
-            // Vérifie si l'utilisateur existe dans la base de données
-            const existingUser = await User.findOne({ username: editeur });
-            if (existingUser) {
-                editeur = existingUser._id;
-            }
-        }
 
         // calcul du prix Nette
         let prixNette = 0;
@@ -127,6 +119,32 @@ exports.canceledFacture = async (req, res) => {
             facture.statut = 'Annulé';
             await facture.save();
             res.status(200).json({ message: 'Facture annulée!' });
+        } else {
+            res.status(404).json({ message: 'Facture non trouvée!' });
+        }
+    } catch (error) {
+        res.status(400).json({error})
+    }
+};
+
+exports.validerFacture = async (req, res) => {
+    try {
+        const facture = await Facture.findById(req.params.id);
+        if (facture && facture.statut == 'En cours') {
+            facture.statut = 'Validé';
+            await facture.save();
+            facture.lignes.forEach(async (ligne) => {
+                const produit = await Produit.findById(ligne.produit);
+                produit.inStock = false;
+                const type = await Type.findById(produit.type);
+                type.quantite -= ligne.quantite;
+                const marque = await Marque.findById(produit.marque);
+                marque.quantite -= ligne.quantite;
+                await marque.save();
+                await type.save();
+                await produit.save();
+            });
+            res.status(200).json({ message: 'Facture validée!' });
         } else {
             res.status(404).json({ message: 'Facture non trouvée!' });
         }

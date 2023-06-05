@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/windows/flutter
+# Install script for directory: C:/Users/DELL/Documents/CommerceApp/test_commerce_app/windows/flutter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,6 +1,6 @@
-^C:\USERS\OLA CHOGNIKA\DOCUMENTS\MY_SHOP\TEST_COMMERCE_APP\BUILD\WINDOWS\CMAKEFILES\18A57783471AADE7055193FBD8964DE2\GENERATE.STAMP.RULE
+^C:\USERS\DELL\DOCUMENTS\COMMERCEAPP\TEST_COMMERCE_APP\BUILD\WINDOWS\CMAKEFILES\8A2BD839A4A039E1C9A8F42FAB48F9C4\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" "-SC:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/windows" "-BC:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/test_commerce_app.sln"
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/DELL/Documents/CommerceApp/test_commerce_app/windows -BC:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/test_commerce_app.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

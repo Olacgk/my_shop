@@ -29,7 +29,7 @@ exports.login = (req, res ) => {
 
         User.findOne({username})
         .then(user=>{
-            if(!user){
+            if(!user || !user.active){
                 return res.status(401).json({error:'Utilisateur non trouvé!'})
             }
             bcrypt.compare(password, user.password)
@@ -54,3 +54,52 @@ exports.login = (req, res ) => {
         return res.status(500).json({error});
     }
 }
+
+exports.getAllUsers = (req, res) => {
+    try {
+        User.find()
+        .then(users => res.status(200).json(users))
+        .catch(error => res.status(400).json({ error }));
+    } catch (error) {
+        res.status(500).json({ error: 'Une erreur est survenue lors de la récupération des utilisateurs.', error });
+    }
+};
+
+exports.desactivateUser = (req, res) => {
+    try {
+        User.updateOne({_id: req.params.id}, {active: false})
+        .then(() => res.status(200).json({ message: 'Utilisateur désactivé !'}))
+        .catch(error => res.status(400).json({ error }));
+    } catch (error) {
+        res.status(500).json({ error: 'Une erreur est survenue lors de la désactivation de l\'utilisateur.', error });
+    }
+};
+
+exports.changePassword = (req, res) => {
+    try {
+        const { oldPassword, password } = req.body;
+        User.findOne({_id: req.params.id})
+        .then(user=>{
+            if(!user){
+                return res.status(401).json({error:'Utilisateur non trouvé!'})
+            }
+            bcrypt.compare(oldPassword, user.password)
+            .then(valide=>{
+                if (!valide) {
+                    return res.status(401).json({error:'Mot de passe incorrect!'})
+                }
+            })
+            .catch(error =>{
+              return res.status(500).json({error});
+            })
+        })
+        bcrypt.hash(password, 10)
+        .then(hash =>{
+            User.updateOne({_id: req.params.id}, {password: hash})
+            .then(() => res.status(200).json({ message: 'Mot de passe modifié !'}))
+            .catch(error => res.status(400).json({ error }));
+        })
+    } catch (error) {
+        res.status(500).json({ error: 'Une erreur est survenue lors de la modification du mot de passe.', error });
+    }
+};

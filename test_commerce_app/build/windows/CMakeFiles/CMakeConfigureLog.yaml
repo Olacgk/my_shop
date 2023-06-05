@@ -24,9 +24,9 @@ events:
       The output was:
       0
       MSBuild version 17.6.3+07e294721 for .NET Framework
-      La génération a démarré 02/06/2023 09:07:02.
+      La génération a démarré 05/06/2023 15:07:29.
       
-      Projet "C:\\Users\\Ola Chognika\\Documents\\my_shop\\test_commerce_app\\build\\windows\\CMakeFiles\\3.26.0-msvc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" sur le noud 1 (cibles par défaut).
+      Projet "C:\\Users\\DELL\\Documents\\CommerceApp\\test_commerce_app\\build\\windows\\CMakeFiles\\3.26.0-msvc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" sur le noud 1 (cibles par défaut).
       PrepareForBuild:
         Création du répertoire "Debug\\".
         Création du répertoire "Debug\\CompilerIdCXX.tlog\\".
@@ -37,7 +37,7 @@ events:
         CMakeCXXCompilerId.cpp
       Link:
         C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> C:\\Users\\Ola Chognika\\Documents\\my_shop\\test_commerce_app\\build\\windows\\CMakeFiles\\3.26.0-msvc3\\CompilerIdCXX\\CompilerIdCXX.exe
+        CompilerIdCXX.vcxproj -> C:\\Users\\DELL\\Documents\\CommerceApp\\test_commerce_app\\build\\windows\\CMakeFiles\\3.26.0-msvc3\\CompilerIdCXX\\CompilerIdCXX.exe
       PostBuildEvent:
         for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
         :VCEnd
@@ -45,13 +45,13 @@ events:
       FinalizeBuildStatus:
         Suppression du fichier "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
         Mise à jour de l'horodatage "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Génération du projet "C:\\Users\\Ola Chognika\\Documents\\my_shop\\test_commerce_app\\build\\windows\\CMakeFiles\\3.26.0-msvc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" terminée (cibles par défaut).
+      Génération du projet "C:\\Users\\DELL\\Documents\\CommerceApp\\test_commerce_app\\build\\windows\\CMakeFiles\\3.26.0-msvc3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" terminée (cibles par défaut).
       
       La génération a réussi.
           0 Avertissement(s)
           0 Erreur(s)
       
-      Temps écoulé 00:00:25.07
+      Temps écoulé 00:00:01.54
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -59,7 +59,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
       
       The CXX compiler identification is MSVC, found in:
-        C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/CMakeFiles/3.26.0-msvc3/CompilerIdCXX/CompilerIdCXX.exe
+        C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/CMakeFiles/3.26.0-msvc3/CompilerIdCXX/CompilerIdCXX.exe
       
   -
     kind: "try_compile-v1"
@@ -70,8 +70,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-9povmx"
-      binary: "C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-9povmx"
+      source: "C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-fvz7n3"
+      binary: "C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-fvz7n3"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -80,37 +80,37 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-9povmx
+        Change Dir: C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-fvz7n3
         
-        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_b3701.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.6.3+07e294721 for .NET Framework
-        La génération a démarré 02/06/2023 09:07:40.
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_971ba.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.6.3+07e294721 for .NET Framework
+        La génération a démarré 05/06/2023 15:07:32.
         
-        Projet "C:\\Users\\Ola Chognika\\Documents\\my_shop\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-9povmx\\cmTC_b3701.vcxproj" sur le noud 1 (cibles par défaut).
+        Projet "C:\\Users\\DELL\\Documents\\CommerceApp\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-fvz7n3\\cmTC_971ba.vcxproj" sur le noud 1 (cibles par défaut).
         PrepareForBuild:
-          Création du répertoire "cmTC_b3701.dir\\Debug\\".
-          Création du répertoire "C:\\Users\\Ola Chognika\\Documents\\my_shop\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-9povmx\\Debug\\".
-          Création du répertoire "cmTC_b3701.dir\\Debug\\cmTC_b3701.tlog\\".
+          Création du répertoire "cmTC_971ba.dir\\Debug\\".
+          Création du répertoire "C:\\Users\\DELL\\Documents\\CommerceApp\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-fvz7n3\\Debug\\".
+          Création du répertoire "cmTC_971ba.dir\\Debug\\cmTC_971ba.tlog\\".
         InitializeBuildStatus:
-          Création de "cmTC_b3701.dir\\Debug\\cmTC_b3701.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
+          Création de "cmTC_971ba.dir\\Debug\\cmTC_971ba.tlog\\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_b3701.dir\\Debug\\\\" /Fd"cmTC_b3701.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_971ba.dir\\Debug\\\\" /Fd"cmTC_971ba.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
           Compilateur d'optimisation Microsoft (R) C/C++ version 19.36.32532 pour x64
           CMakeCXXCompilerABI.cpp
           Copyright (C) Microsoft Corporation. Tous droits réservés.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_b3701.dir\\Debug\\\\" /Fd"cmTC_b3701.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_971ba.dir\\Debug\\\\" /Fd"cmTC_971ba.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Ola Chognika\\Documents\\my_shop\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-9povmx\\Debug\\cmTC_b3701.exe" /INCREMENTAL /ILK:"cmTC_b3701.dir\\Debug\\cmTC_b3701.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-9povmx/Debug/cmTC_b3701.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Ola Chognika/Documents/my_shop/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-9povmx/Debug/cmTC_b3701.lib" /MACHINE:X64  /machine:x64 cmTC_b3701.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_b3701.vcxproj -> C:\\Users\\Ola Chognika\\Documents\\my_shop\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-9povmx\\Debug\\cmTC_b3701.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\DELL\\Documents\\CommerceApp\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-fvz7n3\\Debug\\cmTC_971ba.exe" /INCREMENTAL /ILK:"cmTC_971ba.dir\\Debug\\cmTC_971ba.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-fvz7n3/Debug/cmTC_971ba.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/CMakeFiles/CMakeScratch/TryCompile-fvz7n3/Debug/cmTC_971ba.lib" /MACHINE:X64  /machine:x64 cmTC_971ba.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_971ba.vcxproj -> C:\\Users\\DELL\\Documents\\CommerceApp\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-fvz7n3\\Debug\\cmTC_971ba.exe
         FinalizeBuildStatus:
-          Suppression du fichier "cmTC_b3701.dir\\Debug\\cmTC_b3701.tlog\\unsuccessfulbuild".
-          Mise à jour de l'horodatage "cmTC_b3701.dir\\Debug\\cmTC_b3701.tlog\\cmTC_b3701.lastbuildstate".
-        Génération du projet "C:\\Users\\Ola Chognika\\Documents\\my_shop\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-9povmx\\cmTC_b3701.vcxproj" terminée (cibles par défaut).
+          Suppression du fichier "cmTC_971ba.dir\\Debug\\cmTC_971ba.tlog\\unsuccessfulbuild".
+          Mise à jour de l'horodatage "cmTC_971ba.dir\\Debug\\cmTC_971ba.tlog\\cmTC_971ba.lastbuildstate".
+        Génération du projet "C:\\Users\\DELL\\Documents\\CommerceApp\\test_commerce_app\\build\\windows\\CMakeFiles\\CMakeScratch\\TryCompile-fvz7n3\\cmTC_971ba.vcxproj" terminée (cibles par défaut).
         
         La génération a réussi.
             0 Avertissement(s)
             0 Erreur(s)
         
-        Temps écoulé 00:00:07.24
+        Temps écoulé 00:00:00.82
         
       exitCode: 0
 ...

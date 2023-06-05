@@ -1,33 +1,3 @@
-// const { Sequelize, DataTypes } = require('sequelize');
-
-// const sequelize = new Sequelize('gestcom', 'root', '', {
-//     host: 'localhost',
-//     dialect: 'mysql',
-//   });
-
-
-// const User = sequelize.define('User', {
-//     id: {
-//       type: DataTypes.INTEGER,
-//       primaryKey: true,
-//       autoIncrement: true,
-//     },
-//     name: {
-//       type: DataTypes.STRING,
-//       allowNull: false
-//     },
-//     role: {
-//       type: DataTypes.STRING,
-//       allowNull: false
-//     },
-//     password: {
-//         type: DataTypes.STRING,
-//         allowNull: false
-//     }
-//   });
-
-//   module.exports = User;
-
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
@@ -48,7 +18,7 @@ const users = mongoose.Schema({
     role: {
         type: String,
         required: true,
-        enum: ['admin', 'vendor', 'comptable']
+        enum: ['admin', 'vendor']
     },
     password: {
         type: String,
@@ -56,9 +26,13 @@ const users = mongoose.Schema({
         min : 6,
         max : 1024
     },
-    contrat: {
+    factures: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Contrats'
+        ref: 'Factures'
+    },
+    active: {
+        type: Boolean,
+        default: true
     }
 });
 

@@ -52,3 +52,13 @@ exports.ajoutProduit = async (req, res) => {
         res.status(400).json({error})
     }
 };
+
+exports.productInStock = async (req, res) => {
+    try {
+        Produit.find()
+        .then(users => res.status(200).json(users))
+        .catch(error => res.status(400).json({ error }));
+    } catch (error) {
+        res.status(400).json({error})
+    }
+};

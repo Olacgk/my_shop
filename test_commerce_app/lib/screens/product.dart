@@ -34,6 +34,7 @@ class _ProductPageState extends State<ProductPage> {
                 onPressed: () {
                   // Ajouter le code pour gérer le bouton d'ajout
                 },
+                style: ElevatedButton.styleFrom(primary: Colors.black26),
                 child: Text('Add'),
               ),
             ],
@@ -41,7 +42,7 @@ class _ProductPageState extends State<ProductPage> {
           SizedBox(height: 16.0),
           PaginatedDataTable(
             header: Text('Liste des produits'),
-            rowsPerPage: 10,
+            rowsPerPage: 4,
             columns: [
               DataColumn(label: Text('Header A')),
               DataColumn(label: Text('Header B')),

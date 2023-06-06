@@ -26,7 +26,7 @@ exports.ajoutFacture = async (req, res) => {
     try {
         const { nomClient, numClient, statut, editeur, lignes, tva } = req.body;
 
-        let client = null; // Correction : utiliser "let" au lieu de "const"
+        let client = null;
 
         // Vérifie si le client existe dans la base de données
         const existingClient = await Client.findOne({ nom: nomClient });

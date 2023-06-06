@@ -55,10 +55,10 @@ exports.ajoutProduit = async (req, res) => {
 
 exports.productInStock = async (req, res) => {
     try {
-        Produit.find()
-        .then(users => res.status(200).json(users))
-        .catch(error => res.status(400).json({ error }));
+      const produits = await Produit.find({ inStock: true });
+      res.status(200).json({ produits });
     } catch (error) {
-        res.status(400).json({error})
+      res.status(400).json({ error });
     }
-};
+  };
+  

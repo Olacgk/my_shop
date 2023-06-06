@@ -13,15 +13,37 @@ class Authentication extends StatefulWidget {
 
 class _AuthenticationState extends State<Authentication> {
   final _formKey = GlobalKey<FormState>();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  Future<void> fetchData() async {
-    final response = await http.get(Uri.parse('http://127.0.0.1:5000/api/user/login'));
+  Future<void> login() async {
+    final String username = _usernameController.value.text;
+    final String password = _passwordController.value.text;
+
+    final response = await http.post(Uri.parse('http://localhost:5000/api/user/login'),
+        body: {
+      'username' : username,
+      'password' : password
+    });
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      // Traitez les données récupérées
-
+      Navigator.pushReplacement(context,
+      MaterialPageRoute(builder: (context) => HomePage()
+      )
+      );
     } else {
-      // Gérez les erreurs
+      showDialog(context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('Erreur'),
+            content: const Text('Identifiants incorrects'),
+            actions: [
+              TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'))
+            ],
+          )
+      );
     }
   }
 
@@ -56,6 +78,7 @@ class _AuthenticationState extends State<Authentication> {
                     const Text("Username"),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: _usernameController,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.person, color: Colors.black),
                         hintText: 'Username...',
@@ -71,6 +94,7 @@ class _AuthenticationState extends State<Authentication> {
                     const Text("Password"),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: _passwordController,
                       obscureText: true,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.lock, color: Colors.black),
@@ -89,16 +113,11 @@ class _AuthenticationState extends State<Authentication> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomePage(),
-                              ),
-                            );
+                            login();
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.black26
+                          backgroundColor: Colors.black26
                         ),
                         child: const Text('Login'),
                       ),

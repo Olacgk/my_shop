@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:test_commerce_app/screens/authentication.dart';
+import 'package:test_commerce_app/screens/product.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
+// Future<void> logout() async {
+//   // Logique de déconnexion
+//   Navigator.pushReplacement(
+//       context, MaterialPageRoute(builder: (context) => Authentication()));
+// }
 
 class _HomePageState extends State<HomePage> {
   String _selectedMenu = 'Accueil'; // Menu sélectionné par défaut
@@ -25,14 +33,18 @@ class _HomePageState extends State<HomePage> {
               // Logique de déconnexion
             },
           ),
-          SizedBox(width: 15,),
+          SizedBox(
+            width: 15,
+          ),
           IconButton(
             icon: Icon(Icons.exit_to_app),
             onPressed: () {
               // Afficher le profil de l'utilisateur
             },
           ),
-          SizedBox(width: 20,)
+          SizedBox(
+            width: 20,
+          )
         ],
       ),
       body: Row(
@@ -111,7 +123,7 @@ class _HomePageState extends State<HomePage> {
         );
       case 'Produits':
         return Center(
-          child: Text('Page des produits'),
+          child: ProductPage(),
         );
       default:
         return Container();

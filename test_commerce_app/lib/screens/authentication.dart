@@ -8,25 +8,45 @@ class Authentication extends StatefulWidget {
   const Authentication({Key? key}) : super(key: key);
 
   @override
-  AuthenticationState createState() => AuthenticationState();
+  _AuthenticationState createState() => _AuthenticationState();
 }
 
-class AuthenticationState extends State<Authentication> {
+class _AuthenticationState extends State<Authentication> {
   final _formKey = GlobalKey<FormState>();
-  final  _usernameController = TextEditingController();
-  final  _passwordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  Future<void> fetchData() async {
-    final response = await http.post(Uri.parse('http://127.0.0.1:5000/api/user/login'),
-    body:{
-      'username': _usernameController.text,
-      'password': _passwordController.text
-    },);
+  bool showPassword = false;
+
+  Future<void> login() async {
+    final String username = usernameController.value.text;
+    final String password = passwordController.value.text;
+
+    final response =
+        await http.post(Uri.parse('http://127.0.0.1:5000/api/user/login'),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode({'username': username, 'password': password}));
+
+    final data = jsonDecode(response.body);
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      // Traitez les données récupérées
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     } else {
-      // Gérez les erreurs
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: const Text('Erreur'),
+                content: Text(data.error),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text('OK'))
+                ],
+              ));
     }
   }
 
@@ -38,10 +58,7 @@ class AuthenticationState extends State<Authentication> {
           constraints: const BoxConstraints(maxWidth: 400, maxHeight: 500),
           padding: const EdgeInsets.all(20.0),
           decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.black,
-              width: 1.0
-            ),
+            border: Border.all(color: Colors.black, width: 1.0),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Column(
@@ -61,7 +78,7 @@ class AuthenticationState extends State<Authentication> {
                     const Text("Username"),
                     const SizedBox(height: 10),
                     TextFormField(
-                      controller: _usernameController,
+                      controller: usernameController,
                       decoration: const InputDecoration(
                         prefixIcon: Icon(Icons.person, color: Colors.black),
                         hintText: 'Username...',
@@ -77,12 +94,23 @@ class AuthenticationState extends State<Authentication> {
                     const Text("Password"),
                     const SizedBox(height: 10),
                     TextFormField(
-                      controller: _passwordController,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.lock, color: Colors.black),
+                      controller: passwordController,
+                      obscureText: !showPassword,
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.lock, color: Colors.black),
                         hintText: 'Password...',
-                      ),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });
+                          },
+                          child: Icon(
+                            showPassword ? Icons.visibility : Icons.visibility_off,
+                            color: Colors.black,
+                          ),
+                        ),
+                        ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your password';
@@ -96,17 +124,11 @@ class AuthenticationState extends State<Authentication> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomePage(),
-                              ),
-                            );
+                            login();
                           }
                         },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.black26
-                        ),
+                        style:
+                            ElevatedButton.styleFrom(primary: Colors.black26),
                         child: const Text('Login'),
                       ),
                     ),

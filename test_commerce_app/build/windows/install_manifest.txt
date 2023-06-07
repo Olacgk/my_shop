@@ -1,9 +1,0 @@
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/data/icudtl.dat
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/flutter_windows.dll
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/assets/images/Nature-Quotes.png
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/kernel_blob.bin
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
-C:/Users/DELL/Documents/CommerceApp/test_commerce_app/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf

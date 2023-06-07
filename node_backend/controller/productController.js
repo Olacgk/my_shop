@@ -5,7 +5,7 @@ const Marque = require('../model/Marque');
 
 exports.ajoutProduit = async (req, res) => {
     try {
-        const { numProduit, numSerie, marque, type, detail, etat, price } = req.body;
+        const { numSerie, marque, type, detail, etat, price } = req.body;
 
         let typeObj = null;
         let marqueObj = null;
@@ -32,8 +32,21 @@ exports.ajoutProduit = async (req, res) => {
             marqueObj = await newMarque.save();
         }
 
+        function generateProductNumber() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let productNumber = '';
+          
+            // Générer une chaîne aléatoire de longueur 8
+            for (let i = 0; i < 8; i++) {
+              const randomIndex = Math.floor(Math.random() * chars.length);
+              productNumber += chars.charAt(randomIndex);
+            }
+          
+            return productNumber;
+          }
+
         const produit = new Produit({
-            numProduit: numProduit,
+            numProduit: generateProductNumber(),
             numSerie: numSerie,
             detail: detail,
             etat: etat,
@@ -56,7 +69,33 @@ exports.ajoutProduit = async (req, res) => {
 exports.productInStock = async (req, res) => {
     try {
       const produits = await Produit.find({ inStock: true });
-      res.status(200).json({ produits });
+      res.status(200).json(produits);
+    } catch (error) {
+      res.status(400).json({ error });
+    }
+  };
+
+  exports.getAllProduit = async (req, res) => {
+    try {
+      const produits = await Produit.find()
+        .populate('marque')
+        .populate('type')
+        .exec();
+  
+      const products = produits.map((produit) => {
+        return {
+          marque: produit.marque.nom,
+          type: produit.type.nom,
+          price: produit.price + 'Fcfa',
+          etat: produit.etat,
+          detail: produit.detail,
+          numSerie: produit.numSerie,
+          numProduit: produit.numProduit,
+          inStock: produit.inStock ? 'Oui' : 'Non'
+        };
+      });
+  
+      res.status(200).json(products);
     } catch (error) {
       res.status(400).json({ error });
     }

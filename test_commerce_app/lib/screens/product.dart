@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_commerce_app/screens/product_add_form.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({Key? key}) : super(key: key);
@@ -32,7 +33,11 @@ class _ProductPageState extends State<ProductPage> {
               Spacer(),
               ElevatedButton(
                 onPressed: () {
-                  // Ajouter le code pour gérer le bouton d'ajout
+                  showDialog(context: context, builder: ( BuildContext context){
+                    return Dialog(
+                      child: null,
+                    );
+                  });
                 },
                 style: ElevatedButton.styleFrom(primary: Colors.black26),
                 child: Text('Add'),

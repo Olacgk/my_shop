@@ -34,4 +34,10 @@ app.use('/api/user', userRoute);
 const productRoute = require('./route/produit');
 app.use('/api/produit', productRoute);
 
+const typeRoute = require('./route/type');
+app.use('/api/type', typeRoute);
+
+const marqueRoute = require('./route/marque');
+app.use('/api/marque', marqueRoute);
+
 app.listen(process.env.PORT, ()=> console.log(`Listening to port ${process.env.PORT}`))

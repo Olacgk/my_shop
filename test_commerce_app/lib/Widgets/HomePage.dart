@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:test_commerce_app/screens/authentication.dart';
 import 'package:test_commerce_app/screens/product.dart';
 
+import '../screens/facture.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -115,7 +117,7 @@ class _HomePageState extends State<HomePage> {
         );
       case 'Contrats':
         return Center(
-          child: Text('Page des contrats'),
+          child: MyDataTable(),
         );
       case 'Clients':
         return Center(

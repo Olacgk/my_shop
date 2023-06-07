@@ -37,7 +37,7 @@ class MyDataTable extends StatelessWidget {
             DataColumn(label: Text('Column 3')),
           ],
           rows: List<DataRow>.generate(
-            100,
+            50,
                 (index) => DataRow(
               cells: [
                 DataCell(Text('Row $index')),

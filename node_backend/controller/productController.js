@@ -84,6 +84,7 @@ exports.productInStock = async (req, res) => {
   
       const products = produits.map((produit) => {
         return {
+          _id: produit._id,
           marque: produit.marque.nom,
           type: produit.type.nom,
           price: produit.price + 'Fcfa',

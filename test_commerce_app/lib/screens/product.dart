@@ -1,129 +1,150 @@
 import 'package:flutter/material.dart';
-import 'package:test_commerce_app/screens/product_add_form.dart';
+import 'package:test_commerce_app/dbModel/products.dart';
+import 'package:test_commerce_app/gestAPI.dart';
 
-class ProductPage extends StatefulWidget {
+// class ProductPage extends StatefulWidget {
+//   const ProductPage({Key? key}) : super(key: key);
+//
+//   @override
+//   _ProductPageState createState() => _ProductPageState();
+// }
+
+// class _ProductPageState extends State<ProductPage> {
+//
+//
+//
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: ListView(
+//         padding: const EdgeInsets.all(16),
+//         children: [
+//           Row(
+//             children: [
+//               Container(
+//                 width: 200,
+//                 child: TextField(
+//                   controller: searchController,
+//                   decoration: const InputDecoration(
+//                     labelText: 'Search',
+//                   ),
+//                   onChanged: null,
+//                 ),
+//               ),
+//               const Spacer(),
+//               ElevatedButton(
+//                 onPressed: () {
+//                   showDialog(context: context, builder: ( BuildContext context){
+//                     return const Dialog(
+//                       child: null,
+//                     );
+//                   });
+//                 },
+//                 style: ElevatedButton.styleFrom(primary: Colors.black26),
+//                 child: const Text('Add'),
+//               ),
+//             ],
+//           ),
+//           const SizedBox(height: 16.0),
+//
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+class ProductPage extends StatelessWidget {
   const ProductPage({Key? key}) : super(key: key);
 
-  @override
-  _ProductPageState createState() => _ProductPageState();
-}
-
-class _ProductPageState extends State<ProductPage> {
-
-  final TextEditingController searchController = TextEditingController();
+  // final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Row(
+          padding: const EdgeInsets.all(16),
+        children:[
+            Row(
             children: [
               Container(
                 width: 200,
-                child: TextField(
-                  controller: searchController,
+                child: const TextField(
+                  // controller: searchController,
                   decoration: InputDecoration(
                     labelText: 'Search',
                   ),
                   onChanged: null,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               ElevatedButton(
                 onPressed: () {
                   showDialog(context: context, builder: ( BuildContext context){
-                    return Dialog(
+                    return const Dialog(
                       child: null,
                     );
                   });
                 },
                 style: ElevatedButton.styleFrom(primary: Colors.black26),
-                child: Text('Add'),
+                child: const Text('Add'),
               ),
             ],
           ),
-          SizedBox(height: 16.0),
-          PaginatedDataTable(
-            header: Text('Liste des produits'),
-            rowsPerPage: 4,
-            columns: [
-              DataColumn(label: Text('Header A')),
-              DataColumn(label: Text('Header B')),
-              DataColumn(label: Text('Header C')),
-              DataColumn(label: Text('Header D')),
-            ],
-            source: _DataSource(context),
+          const SizedBox(height: 16.0),
+          FutureBuilder<List<Product>>(
+            future: GestAPI().getProducts(),
+            builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+              if(!snapshot.hasData) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                return Container(
+                    child: ProductTable(datalist: snapshot.data as List<Product>)
+                );
+              }
+            },
           ),
-        ],
+        ]
       ),
     );
   }
 }
 
-class _Row {
-  _Row(
-      this.valueA,
-      this.valueB,
-      this.valueC,
-      this.valueD,
-      );
-
-  final String valueA;
-  final String valueB;
-  final String valueC;
-  final int valueD;
-
-  bool selected = false;
-}
-
-class _DataSource extends DataTableSource {
-  _DataSource(this.context) {
-    _rows = <_Row>[
-      _Row('Cell A1', 'CellB1', 'CellC1', 1),
-      _Row('Cell A2', 'CellB2', 'CellC2', 2),
-      _Row('Cell A3', 'CellB3', 'CellC3', 3),
-      _Row('Cell A4', 'CellB4', 'CellC4', 4),
-    ];
-  }
-
-  final BuildContext context;
-  List<_Row> _rows =[];
-
-  int _selectedCount = 0;
+class ProductTable extends StatelessWidget {
+  const ProductTable({Key? key, required this.datalist}) : super(key: key);
+  final List<Product> datalist;
 
   @override
-  DataRow? getRow(int index) {
-    assert(index >= 0);
-    if (index >= _rows.length) return null;
-    final row = _rows[index];
-    return DataRow.byIndex(
-      index: index,
-      selected: row.selected,
-      onSelectChanged: (value) {
-        if (row.selected != value) {
-          _selectedCount += value! ? 1 : -1;
-          assert(_selectedCount >= 0);
-          row.selected = value!;
-          notifyListeners();
-        }
-      },
-      cells: [
-        DataCell(Text(row.valueA)),
-        DataCell(Text(row.valueB)),
-        DataCell(Text(row.valueC)),
-        DataCell(Text(row.valueD.toString())),
-      ],
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: DataTable(
+        columns: const [
+          DataColumn(label: Text('Num. Produit')),
+          DataColumn(label: Text('Type')),
+          DataColumn(label: Text('Marque')),
+          DataColumn(label: Text('Num. Série')),
+          DataColumn(label: Text('En stock')),
+          DataColumn(label: Text('Actions'))
+        ],
+        rows: datalist.map((data) {
+          return DataRow(
+            cells: [
+              DataCell(Text(data.numProduit)),
+              DataCell(Text(data.type)),
+              DataCell(Text(data.marque)),
+              DataCell(Text(data.numSerie)),
+              DataCell(Text(data.inStock)),
+              const DataCell(Center(
+                child: InkWell(
+                  onTap: null,
+                  child: Icon(Icons.visibility, color: Colors.black26,),
+                ),
+              ))
+            ],
+          );
+        }).toList(),
+      ),
     );
   }
-
-  @override
-  int get rowCount => _rows.length;
-
-  @override
-  bool get isRowCountApproximate => false;
-
-  @override
-  int get selectedRowCount => _selectedCount;
 }

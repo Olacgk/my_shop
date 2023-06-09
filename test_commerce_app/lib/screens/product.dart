@@ -95,13 +95,17 @@ class ProductPage extends StatelessWidget {
           FutureBuilder<List<Product>>(
             future: getProducts(),
             builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-              if(snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Text('Erreur lors de la récupération des produits : ${snapshot.error}');
+              } else if (snapshot.hasData) {
                 List<Product>? products = snapshot.data;
                 return products != null
                     ? ProductTable(datalist: products)
                     : Container();
               } else {
-                  return const Center(child: CircularProgressIndicator());
+                return const Text('Aucun produit trouvé.');
               }
             },
           ),
@@ -125,7 +129,7 @@ class ProductTable extends StatelessWidget {
           DataColumn(label: Text('Num. Produit')),
           DataColumn(label: Text('Type')),
           DataColumn(label: Text('Marque')),
-          DataColumn(label: Text('Num. Série')),
+          DataColumn(label: Text('Prix')),
           DataColumn(label: Text('En stock')),
           DataColumn(label: Text('Actions'))
         ],
@@ -135,7 +139,7 @@ class ProductTable extends StatelessWidget {
               DataCell(Text(data.numProduit ?? '')),
               DataCell(Text(data.type ?? '')),
               DataCell(Text(data.marque ?? '')),
-              DataCell(Text(data.numSerie ?? '')),
+              DataCell(Text(data.price ?? '')),
               DataCell(Text(data.inStock ?? '')),
               const DataCell(Center(
                 child: InkWell(

@@ -1,10 +1,38 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:test_commerce_app/dbModel/products.dart';
+import 'package:test_commerce_app/gestAPI.dart';
 
 /// Example without a datasource
 class DataTable2SimpleDemo extends StatelessWidget {
   const DataTable2SimpleDemo();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Product>>(
+      future: getProducts(),
+      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Text('Erreur lors de la récupération des produits : ${snapshot.error}');
+        } else if (snapshot.hasData) {
+          List<Product>? products = snapshot.data;
+          return products != null
+              ? ContratTable(datalist: products)
+              : Container();
+        } else {
+          return const Text('Aucun produit trouvé.');
+        }
+      },
+    );
+  }
+}
+
+class ContratTable extends StatelessWidget {
+  const ContratTable({Key? key, required this.datalist}) : super(key: key);
+  final List<Product> datalist;
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +57,27 @@ class DataTable2SimpleDemo extends StatelessWidget {
               label: Text('Column D'),
             ),
             DataColumn(
-              label: Text('Column NUMBERS'),
-              numeric: true,
+              label: Text('Column NUMBERS')
             ),
+            DataColumn(label: Text('Data'))
           ],
-          rows: List<DataRow>.generate(
-              100,
-                  (index) => DataRow(cells: [
-                DataCell(Text('A' * (10 - index % 10))),
-                DataCell(Text('B' * (10 - (index + 5) % 10))),
-                DataCell(Text('C' * (15 - (index + 5) % 10))),
-                DataCell(Text('D' * (15 - (index + 10) % 10))),
-                DataCell(Text(((index + 0.1) * 25.4).toString()))
-              ]))),
+          rows: datalist.map((data) {
+            return DataRow(
+              cells: [
+                DataCell(Text(data.numProduit)),
+                DataCell(Text(data.type)),
+                DataCell(Text(data.marque)),
+                DataCell(Text(data.numSerie)),
+                DataCell(Text(data.inStock)),
+                const DataCell(Center(
+                  child: InkWell(
+                    onTap: null,
+                    child: Icon(Icons.visibility, color: Colors.black26,),
+                  ),
+                ))
+              ],
+            );
+          }).toList(),),
     );
   }
 }

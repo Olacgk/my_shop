@@ -7,7 +7,7 @@ class Product {
   final String inStock;
   final String type;
   final String marque;
-  final double price;
+  final String price;
 
   Product(
       {

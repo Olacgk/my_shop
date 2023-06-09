@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
         );
       case 'Contrats':
         return Center(
-          child: MyDataTable(),
+          child: DataTable2SimpleDemo(),
         );
       case 'Clients':
         return Center(

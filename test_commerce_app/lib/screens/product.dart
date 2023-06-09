@@ -93,14 +93,15 @@ class ProductPage extends StatelessWidget {
           ),
           const SizedBox(height: 16.0),
           FutureBuilder<List<Product>>(
-            future: GestAPI().getProducts(),
+            future: getProducts(),
             builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-              if(!snapshot.hasData) {
-                return const Center(child: CircularProgressIndicator());
+              if(snapshot.hasData) {
+                List<Product>? products = snapshot.data;
+                return products != null
+                    ? ProductTable(datalist: products)
+                    : Container();
               } else {
-                return Container(
-                    child: ProductTable(datalist: snapshot.data as List<Product>)
-                );
+                  return const Center(child: CircularProgressIndicator());
               }
             },
           ),
@@ -113,6 +114,7 @@ class ProductPage extends StatelessWidget {
 class ProductTable extends StatelessWidget {
   const ProductTable({Key? key, required this.datalist}) : super(key: key);
   final List<Product> datalist;
+
 
   @override
   Widget build(BuildContext context) {
@@ -130,11 +132,11 @@ class ProductTable extends StatelessWidget {
         rows: datalist.map((data) {
           return DataRow(
             cells: [
-              DataCell(Text(data.numProduit)),
-              DataCell(Text(data.type)),
-              DataCell(Text(data.marque)),
-              DataCell(Text(data.numSerie)),
-              DataCell(Text(data.inStock)),
+              DataCell(Text(data.numProduit ?? '')),
+              DataCell(Text(data.type ?? '')),
+              DataCell(Text(data.marque ?? '')),
+              DataCell(Text(data.numSerie ?? '')),
+              DataCell(Text(data.inStock ?? '')),
               const DataCell(Center(
                 child: InkWell(
                   onTap: null,

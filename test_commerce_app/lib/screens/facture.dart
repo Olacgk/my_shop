@@ -1,54 +1,47 @@
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
-class MyDataTable extends StatelessWidget {
-  final TextEditingController searchController = TextEditingController();
+/// Example without a datasource
+class DataTable2SimpleDemo extends StatelessWidget {
+  const DataTable2SimpleDemo();
+
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 200,
-              child: TextField(
-                controller: searchController,
-                decoration: InputDecoration(
-                  labelText: 'Search',
-                ),
-                onChanged: null,
-              ),
-            ),
-            Spacer(),
-            ElevatedButton(
-              onPressed: () {
-                // Ajouter le code pour gérer le bouton d'ajout
-              },
-              child: Text('Add'),
-            ),
-          ],
-        ),
-        SizedBox(height: 16.0),
-        SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: DataTable(
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: DataTable2(
+          columnSpacing: 12,
+          horizontalMargin: 12,
+          minWidth: 600,
           columns: [
-            DataColumn(label: Text('Column 1')),
-            DataColumn(label: Text('Column 2')),
-            DataColumn(label: Text('Column 3')),
+            DataColumn2(
+              label: Text('Column A'),
+              size: ColumnSize.L,
+            ),
+            DataColumn(
+              label: Text('Column B'),
+            ),
+            DataColumn(
+              label: Text('Column C'),
+            ),
+            DataColumn(
+              label: Text('Column D'),
+            ),
+            DataColumn(
+              label: Text('Column NUMBERS'),
+              numeric: true,
+            ),
           ],
           rows: List<DataRow>.generate(
-            50,
-                (index) => DataRow(
-              cells: [
-                DataCell(Text('Row $index')),
-                DataCell(Text('Row $index')),
-                DataCell(Text('Row $index')),
-              ],
-            ),
-          ),
-        ),
-      ),
-    ]
+              100,
+                  (index) => DataRow(cells: [
+                DataCell(Text('A' * (10 - index % 10))),
+                DataCell(Text('B' * (10 - (index + 5) % 10))),
+                DataCell(Text('C' * (15 - (index + 5) % 10))),
+                DataCell(Text('D' * (15 - (index + 10) % 10))),
+                DataCell(Text(((index + 0.1) * 25.4).toString()))
+              ]))),
     );
   }
 }

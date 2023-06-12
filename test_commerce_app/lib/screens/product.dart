@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_commerce_app/dbModel/products.dart';
 import 'package:test_commerce_app/gestAPI.dart';
+import 'package:test_commerce_app/screens/product_add_form.dart';
 
 // class ProductPage extends StatefulWidget {
 //   const ProductPage({Key? key}) : super(key: key);
@@ -80,15 +81,13 @@ class ProductPage extends StatelessWidget {
               const Spacer(),
               ElevatedButton(
                 onPressed: () {
-                  showDialog(context: context, builder: ( BuildContext context){
-                    return const Dialog(
-                      child: null,
-                    );
-                  });
+                  showAddProductDialog(context);
+                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> AddProductPage()));
                 },
                 style: ElevatedButton.styleFrom(primary: Colors.black26),
                 child: const Text('Add'),
               ),
+
             ],
           ),
           const SizedBox(height: 16.0),
@@ -122,8 +121,8 @@ class ProductTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
+    return Padding(
+      padding: const EdgeInsets.all(16),
       child: DataTable(
         columns: const [
           DataColumn(label: Text('Num. Produit')),
@@ -136,15 +135,15 @@ class ProductTable extends StatelessWidget {
         rows: datalist.map((data) {
           return DataRow(
             cells: [
-              DataCell(Text(data.numProduit ?? '')),
-              DataCell(Text(data.type ?? '')),
-              DataCell(Text(data.marque ?? '')),
-              DataCell(Text(data.price ?? '')),
-              DataCell(Text(data.inStock ?? '')),
+              DataCell(Text(data.numProduit)),
+              DataCell(Text(data.type)),
+              DataCell(Text(data.marque)),
+              DataCell(Text(data.price)),
+              DataCell(Text(data.inStock)),
               const DataCell(Center(
                 child: InkWell(
                   onTap: null,
-                  child: Icon(Icons.visibility, color: Colors.black26,),
+                  child: Icon(Icons.more_horiz, color: Colors.black26,),
                 ),
               ))
             ],

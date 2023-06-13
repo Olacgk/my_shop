@@ -16,6 +16,7 @@ class _AddProductPageState extends State<AddProductPage> {
   TextEditingController _priceController = TextEditingController();
   TextEditingController _typeController = TextEditingController();
   TextEditingController _marqueController = TextEditingController();
+  TextEditingController _etatController = TextEditingController();
 
 
   @override
@@ -25,6 +26,7 @@ class _AddProductPageState extends State<AddProductPage> {
     _priceController.dispose();
     _marqueController.dispose();
     _typeController.dispose();
+    _etatController.dispose();
     super.dispose();
   }
 
@@ -32,13 +34,17 @@ class _AddProductPageState extends State<AddProductPage> {
     if (_formKey.currentState!.validate()) {
       final response = await http.post(
         Uri.parse('http://localhost:5000/api/produit/new-product'),
-        body: {
-          'serialNumber': _serialNumberController.text,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String> {
+          'numSerie': _serialNumberController.text,
           'marque': _marqueController.text,
           'type': _typeController.text,
           'detail': _detailController.text,
           'price': _priceController.text,
-        },
+          'etat': _etatController.text
+        },)
       );
       if (response.statusCode == 200) {
         showDialog(
@@ -132,6 +138,18 @@ class _AddProductPageState extends State<AddProductPage> {
               ),
               SizedBox(height: 16.0),
               TextFormField(
+                controller: _etatController,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(labelText: 'Etat'),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Veuillez entrer un état';
+                  }
+                  return null;
+                },
+              ),
+              const Spacer(),
+              TextFormField(
                 controller: _priceController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(labelText: 'Prix'),
@@ -144,7 +162,10 @@ class _AddProductPageState extends State<AddProductPage> {
               ),
               SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: _submitForm,
+                onPressed: (){
+                  _submitForm();
+                  _formKey.currentState?.reset();
+                },
                 child: Text('Ajouter'),
               ),
             ],
